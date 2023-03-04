@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <script type="text/javascript">
+        let listaBuenosAnimes = [ "Death note", "HunterXHunter", "Jujutsu Kaisen"];
+
+        function valoresLista() {
+            let indice = 0;
+            let listadoEnHTML = "";
+            let htmlRenderizado = "";
+
+            while(indice < listaBuenosAnimes.length){
+                listadoEnHTML = listadoEnHTML + `<li>${listaBuenosAnimes[indice]}</li>`;
+                console.log(`Iteracion: ${indice}`);
+                console.log(`${listadoEnHTML}`);
+                //htmlRenderizado = htmlRenderizado + "<li>" + listaBuenosAnimes[indice] + "</li>";
+
+                indice++;
+            }
+            console.log("RESULTADO");
+            console.log(`${listadoEnHTML}`);
+            return listadoEnHTML;
+        }
+
+        function codigoHTMLcomoString(){ // Este código sólo muestra un string con el código HTML generado en valoresLista()
+            let indice = 0;
+            let htmlRenderizado = "";
+
+            while(indice < listaBuenosAnimes.length){
+                htmlRenderizado = htmlRenderizado + " < li > "+listaBuenosAnimes[indice]+" < / li > ";
+                indice++;
+            }
+            return htmlRenderizado;
+        }
+
+        let llenarLista = () => {
+            document.getElementById("lista").innerHTML = valoresLista();
+            document.getElementById("titulo").innerHTML = "Lista molona y llena!";
+            document.getElementById("htmlEnTexto").innerHTML = codigoHTMLcomoString();
+        }
+
+        let contenidoDeBloqueResultados = "<ul>";
+
+        let llenarListaSinEtiquetasVacias = () => {
+            for (let anime of listaBuenosAnimes){
+                //x+=2 == x=x+2
+                contenidoDeBloqueResultados += `<li>${anime}</li>`;
+            }
+            console.log(contenidoDeBloqueResultados);
+                contenidoDeBloqueResultados += `</ul>`;
+                document.getElementById("resultados").innerHTML = contenidoDeBloqueResultados;
+            
+        }
+   
+    
+   </script>
+
+    <body>
+        <h1 id="titulo">Lista molona pero vacía!</h1>
+        <button onClick="llenarLista()">Llenar lista!</button>
+        <button onClick="llenarListaSinEtiquetasVacias()">Llenar lista sin vacios!</button> <!--ESTA MIERDA NO FUNCIONA-->
+
+        <ul id="lista">
+        </ul>
+
+        <h3>String incrustado</h3>
+        <p id="htmlEnTexto"></p>
+        
+        <div id="resulados">
+            
+        </div>
+    </body>
+</html>
+
+
